@@ -65,6 +65,8 @@ class Hand {
 
       // You decide what functions you'll need...
 	void push_back(Card c);
+	void reshuffle();
+	void sort_by_rank();
 	std::vector<Card> get_cur_hand();
    private:
       // You decide what fields you'll need...
@@ -83,9 +85,12 @@ class Player {
 	int get_money();
 	void subtract_bet(int bet);
 	void collect_prize(int prize);
+	int get_rounds();
+	void increment_rounds();
 
    private:
       int money;
+	int rounds = 0;
       // You decide what extra fields (if any) you'll need...
 };
 
