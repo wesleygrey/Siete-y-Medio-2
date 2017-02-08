@@ -68,6 +68,9 @@ class Hand {
 	void reshuffle();
 	void sort_by_rank();
 	std::vector<Card> get_cur_hand();
+	double get_total();
+	void add_to_total(double add);
+	void reset_total();
    private:
       // You decide what fields you'll need...
 	std::vector<Card> cur_hand;
