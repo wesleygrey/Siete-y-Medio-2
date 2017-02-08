@@ -58,6 +58,37 @@ newRound:
 		}
 		gamelog << "Dealer's total: " << dealer_hand.get_total() << "." << std::endl << std::endl;
 	}
+	
+	my_hand.reshuffle(); dealer_hand.reshuffle();
+
+	while ((player.get_money() > 0 && dealer_losses < MAX_DEALER_LOSSES) || player.get_rounds() == 0) {
+
+		char another_card = 'y';
+
+		do {
+			std::cout << "You have $" << player.get_money() << ". Enter bet: ";
+			std::cin >> bet;
+			if (bet > player.get_money()) {
+				std::cout << "You don't have $" << bet << " to bet. Try again." << std::endl;
+				bet = 0;
+			}
+		} while (bet == 0);
+
+		Card first_card;
+		my_hand.push_back(first_card);
+		my_hand.add_to_total(first_card.get_rank());
+
+		while (another_card == 'y' && my_hand.get_total() <= MAX_HAND_TOTAL) {
+
+			if (my_hand.get_cur_hand().size() != 1) {
+				std::cout << "New card:" << std::endl;
+				std::cout << std::setw(20)
+					<< my_hand.get_cur_hand().back().get_spanish_rank() << " de " << my_hand.get_cur_hand().back().get_spanish_suit();
+				std::cout << std::setw(20)
+					<< "(" << my_hand.get_cur_hand().back().get_english_rank() << " of "
+					<< my_hand.get_cur_hand().back().get_english_suit() << ")" << std::endl << std::endl;
+				//std::sort(my_hand.get_cur_hand().begin(), my_hand.get_cur_hand().end());
+			}
    
    return 0;
 }
