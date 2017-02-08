@@ -197,6 +197,15 @@ void Hand::push_back(Card c) {
 	cur_hand.push_back(c);
 }
 
+void Hand::reshuffle() {
+	cur_hand.clear();
+	total = 0;
+}
+
+void Hand::sort_by_rank() {
+
+}
+
 vector<Card> Hand::get_cur_hand() {
 	return cur_hand;
 }
@@ -221,4 +230,12 @@ Player::Player(int m) {
 
 	void Player::collect_prize(int prize) {
 		money += prize;
+	}
+
+	int Player::get_rounds() {
+		return rounds;
+	}
+
+	void Player::increment_rounds() {
+		++rounds;
 	}
