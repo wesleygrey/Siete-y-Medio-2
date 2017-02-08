@@ -210,6 +210,17 @@ vector<Card> Hand::get_cur_hand() {
 	return cur_hand;
 }
 
+double Hand::get_total() {
+	return total;
+}
+
+void Hand::add_to_total(double add) {
+	total += add;
+}
+	void Hand::reset_total(){
+		total = 0;
+}
+
 
 /* *************************************************
    Player class
